@@ -1,11 +1,10 @@
 package hu.arondev.uni.mobileprog.framework.db.datasource
 
+import android.content.Context
 import hu.arondev.uni.mobileprog.core.data.DocumentDataSource
 import hu.arondev.uni.mobileprog.core.domain.Document
 import hu.arondev.uni.mobileprog.framework.db.BookmarkDatabase
 import hu.arondev.uni.mobileprog.framework.db.entity.DocumentEntity
-
-// android.content.context
 
 class RoomDocumentDataSource(val context: Context): DocumentDataSource {
 

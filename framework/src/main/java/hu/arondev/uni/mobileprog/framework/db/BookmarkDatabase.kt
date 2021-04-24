@@ -1,6 +1,9 @@
 package hu.arondev.uni.mobileprog.framework.db
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
+
 import hu.arondev.mobileprog.framework.db.entity.BookmarkEntity
 import hu.arondev.uni.mobileprog.framework.db.dao.BookmarkDao
 import hu.arondev.uni.mobileprog.framework.db.dao.DocumentDao
@@ -20,9 +23,11 @@ abstract class BookmarkDatabase: RoomDatabase() {
             Room.databaseBuilder(context, BookmarkDatabase::class.java, DATABASE_NAME)
                 .fallbackToDestructiveMigration()
                 .build()
-        fun getInstance(context: Context): BookmarkDatabase = (instance ? create{context}.also{instance = it})
+        fun getInstance(context: Context): BookmarkDatabase = instance ?: create(context).also{instance = it}
 
-        abstract fun bookmarkDao(): BookmarkDao
-        abstract fun documentDao(): DocumentDao
+
     }
+
+    abstract fun bookmarkDao(): BookmarkDao
+    abstract fun documentDao(): DocumentDao
 }
