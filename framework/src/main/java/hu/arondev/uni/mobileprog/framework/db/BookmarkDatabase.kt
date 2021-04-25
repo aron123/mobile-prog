@@ -23,9 +23,7 @@ abstract class BookmarkDatabase: RoomDatabase() {
             Room.databaseBuilder(context, BookmarkDatabase::class.java, DATABASE_NAME)
                 .fallbackToDestructiveMigration()
                 .build()
-        fun getInstance(context: Context): BookmarkDatabase = instance ?: create(context).also{instance = it}
-
-
+        fun getInstance(context: Context): BookmarkDatabase = instance ?: create(context).also{ instance = it }
     }
 
     abstract fun bookmarkDao(): BookmarkDao

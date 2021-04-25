@@ -10,9 +10,9 @@ class RoomDocumentDataSource(val context: Context): DocumentDataSource {
 
     private val documentDao = BookmarkDatabase.getInstance(context).documentDao()
 
-    override suspend fun add(document: Document) {
-        TODO("Not yet implemented")
-    }
+    override suspend fun add(document: Document) = documentDao.addDocument(
+            DocumentEntity(document.url, document.name, document.size, document.thumbnail)
+    )
 
     override suspend fun readAll(): List<Document> = documentDao.getDocuments().map{
         Document(
